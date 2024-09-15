@@ -2,67 +2,65 @@
 
 import { motion } from "framer-motion";
 import React, { useState } from "react";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
-import { BsArrowUpRight, BsGithub } from "react-icons/bs";
-
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-
+import { BsArrowUpRight } from "react-icons/bs";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import Link from "next/link";
 import Image from "next/image";
 import WorkSliderBtns from "@/components/WorkSliderBtns";
 
-const projects = [
+// Updated services for the fitness trainer
+const services = [
   {
     num: "01",
-    category: "frontend",
-    title: "project 1",
+    category: "Personal Training",
+    title: "One-on-One Coaching",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate magnam modi.",
-    stack: [{ name: "Html 5" }, { name: "Css 3" }, { name: "Javascript" }],
-    image: "/assets/work/thumb1.png",
-    live: "",
-    github: "",
+      "Personalized training sessions designed to help you achieve your fitness goals, whether you're looking to lose weight, build muscle, or improve overall wellness.",
+    stack: [{ name: "Strength Training" }, { name: "HIIT" }, { name: "Cardio" }],
+    image: "/assets/fitness/personal_training.png",  // Update with actual image path
+    live: "https://calendly.com/davidhamilton473/fitness-consultation", // Replace with actual Calendly booking link
   },
   {
     num: "02",
-    category: "fullstack",
-    title: "project 2",
+    category: "Online Coaching",
+    title: "Virtual Coaching",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate magnam modi.",
-    stack: [{ name: "Next.js" }, { name: "Tailwind.css" }, { name: "Node.js" }],
-    image: "/assets/work/thumb2.png",
-    live: "",
-    github: "",
+      "Train from anywhere with customized virtual coaching sessions tailored to your schedule and goals. Get real-time feedback and support from a certified trainer.",
+    stack: [{ name: "Virtual Sessions" }, { name: "Customized Workouts" }],
+    image: "/assets/fitness/online_coaching.png",
+    live: "https://calendly.com/davidhamilton473/fitness-consultation",
   },
   {
     num: "03",
-    category: "frontend",
-    title: "project 3",
+    category: "Nutrition Coaching",
+    title: "Nutrition Coaching",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate magnam modi.",
-    stack: [{ name: "Next.js" }, { name: "Tailwind.css" }],
-    image: "/assets/work/thumb3.png",
-    live: "",
-    github: "",
+      "Comprehensive nutrition plans that complement your fitness routine, including personalized meal plans and guidance to help you fuel your body effectively.",
+    stack: [{ name: "Meal Planning" }, { name: "Nutrition Advice" }],
+    image: "/assets/fitness/nutrition.png",
+    live: "https://calendly.com/davidhamilton473/fitness-consultation",
+  },
+  {
+    num: "04",
+    category: "Life Coaching",
+    title: "Life Coaching",
+    description:
+      "Focused on helping you set and achieve personal or professional goals, with guidance on lifestyle improvements and overall well-being.",
+    stack: [{ name: "Lifestyle" }, { name: "Mental Wellness" }],
+    image: "/assets/fitness/life_coaching.png",
+    live: "https://calendly.com/davidhamilton473/fitness-consultation",
   },
 ];
 
 const Work = () => {
-  const [project, setProject] = useState(projects[0]);
+  const [service, setService] = useState(services[0]);
 
   const handleSlideChange = (swiper) => {
-    // get current slide index
     const currentIndex = swiper.activeIndex;
-    // update project state based on current slide index
-    setProject(projects[currentIndex]);
+    setService(services[currentIndex]);
   };
 
   return (
@@ -78,54 +76,37 @@ const Work = () => {
         <div className="flex flex-col xl:flex-row xl:gap-[30px]">
           <div className="w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
             <div className="flex flex-col gap-[30px] h-[50%]">
-              {/* outline num */}
+              {/* Service number */}
               <div className="text-8xl leading-none font-extrabold text-transparent text-outline">
-                {project.num}
+                {service.num}
               </div>
-              {/* project category */}
+              {/* Service category */}
               <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
-                {project.category} project
+                {service.category} Program
               </h2>
-              {/* project description */}
-              <p className="text-white/60">{project.description}</p>
-              {/* stack */}
+              {/* Service description */}
+              <p className="text-white/60">{service.description}</p>
+              {/* Training Methods (Stack) */}
               <ul className="flex gap-4">
-                {project.stack.map((item, index) => {
-                  return (
-                    <li key={index} className="text-xl text-accent">
-                      {item.name}
-                      {/* remove the last comma */}
-                      {index !== project.stack.length - 1 && ","}
-                    </li>
-                  );
-                })}
+                {service.stack.map((item, index) => (
+                  <li key={index} className="text-xl text-accent">
+                    {item.name}
+                    {index !== service.stack.length - 1 && ","}
+                  </li>
+                ))}
               </ul>
-              {/* border */}
+              {/* Border */}
               <div className="border border-white/20"></div>
-              {/* buttons */}
+              {/* Booking Button */}
               <div className="flex items-center gap-4">
-                {/* live project button */}
-                <Link href={project.live}>
+                <Link href={service.live}>
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
                       <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
                         <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
                       </TooltipTrigger>
                       <TooltipContent>
-                        <p>Live project</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Link>
-                {/* github project button */}
-                <Link href={project.github}>
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                        <BsGithub className="text-white text-3xl group-hover:text-accent" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Github repository</p>
+                        <p>Book Session</p>
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
@@ -133,6 +114,7 @@ const Work = () => {
               </div>
             </div>
           </div>
+          {/* Image Slider for Services */}
           <div className="w-full xl:w-[50%]">
             <Swiper
               spaceBetween={30}
@@ -140,26 +122,24 @@ const Work = () => {
               className="xl:h-[520px] mb-12"
               onSlideChange={handleSlideChange}
             >
-              {projects.map((project, index) => {
-                return (
-                  <SwiperSlide key={index} className="w-full">
-                    <div className="h-[460px] relative group flex justify-center items-center bg-pink-50/20">
-                      {/* overlay */}
-                      <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
-                      {/* image */}
-                      <div className="relative w-full h-full">
-                        <Image
-                          src={project.image}
-                          fill
-                          className="object-cover"
-                          alt=""
-                        />
-                      </div>
+              {services.map((service, index) => (
+                <SwiperSlide key={index} className="w-full">
+                  <div className="h-[460px] relative group flex justify-center items-center bg-gray-50/20">
+                    {/* Image Overlay */}
+                    <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
+                    {/* Service Image */}
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={service.image}
+                        fill
+                        className="object-cover"
+                        alt={service.title}
+                      />
                     </div>
-                  </SwiperSlide>
-                );
-              })}
-              {/* slider buttons */}
+                  </div>
+                </SwiperSlide>
+              ))}
+              {/* Slider buttons */}
               <WorkSliderBtns
                 containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
                 btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all"

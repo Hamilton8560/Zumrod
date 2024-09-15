@@ -1,42 +1,51 @@
 "use client";
 
+import { useRef } from "react";
+import emailjs from "emailjs-com";
+import { useRouter } from "next/navigation"; // Import useRouter to handle redirection
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { FaWhatsapp, FaEnvelope } from "react-icons/fa";
+import { motion } from 'framer-motion';
 
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+// Replace with your EmailJS details
+const SERVICE_ID = "service_gy9pfw8";
+const TEMPLATE_ID = "template_jams4pp";
+const PUBLIC_KEY = "b2vMoQ9g03st1oCv7";
 
 const info = [
   {
-    icon: <FaPhoneAlt />,
-    title: "Phone",
-    description: "(+40) 321 654 876",
+    icon: <FaWhatsapp />,
+    title: "WhatsApp",
+    description: "(+40) 321 654 876", // Replace with your WhatsApp number
   },
   {
     icon: <FaEnvelope />,
     title: "Email",
-    description: "youremail@gmail.com",
-  },
-  {
-    icon: <FaMapMarkerAlt />,
-    title: "Address",
-    description: "Code Corner, Tech Town 13579",
+    description: "youremail@gmail.com", // Replace with your actual email
   },
 ];
 
-import { motion } from "framer-motion";
-
 const Contact = () => {
+  const form = useRef();
+  const router = useRouter(); // Initialize the router to navigate
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
+      .then((result) => {
+        console.log(result.text);
+        alert("Message sent successfully!");
+        router.push("/"); // Redirect to the home screen after success
+      }, (error) => {
+        console.log(error.text);
+        alert("Failed to send message.");
+      });
+  };
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -50,40 +59,36 @@ const Contact = () => {
         <div className="flex flex-col xl:flex-row gap-[30px]">
           {/* form */}
           <div className="xl:w-[54%] order-2 xl:order-none">
-            <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
+            <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
               <h3 className="text-4xl text-accent">Let's work together</h3>
               <p className="text-white/60">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum
-                nihil sapiente pariatur id totam.
+                Reach out to book a personal training session or inquire about fitness programs.
               </p>
               {/* input */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input type="firstname" placeholder="Firstname" />
-                <Input type="lastname" placeholder="Lastname" />
-                <Input type="email" placeholder="Email address" />
-                <Input type="phone" placeholder="Phone number" />
+                <Input name="firstname" placeholder="Firstname" required />
+                <Input name="lastname" placeholder="Lastname" required />
+                <Input type="email" name="email" placeholder="Email address" required />
+                <Input name="phone" placeholder="Phone number" />
               </div>
               {/* select */}
-              <Select>
+              <Select name="service">
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Select a service</SelectLabel>
-                    <SelectItem value="est">Web Development</SelectItem>
-                    <SelectItem value="cst">UI/UX Design</SelectItem>
-                    <SelectItem value="mst">Logo Design</SelectItem>
+                    <SelectItem value="Personal Training Program">Personal Training Program</SelectItem>
+                    <SelectItem value="Nutrition Coaching">Nutrition Coaching</SelectItem>
+                    <SelectItem value="Online Zoom Session">Online Zoom Session</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
               {/* textarea */}
-              <Textarea
-                className="h-[200px]"
-                placeholder="Type your message here."
-              />
+              <Textarea name="message" className="h-[200px]" placeholder="Type your message here." />
               {/* btn */}
-              <Button size="md" className="max-w-40">
+              <Button size="md" type="submit" className="max-w-40">
                 Send message
               </Button>
             </form>

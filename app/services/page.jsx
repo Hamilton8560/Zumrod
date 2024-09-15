@@ -6,31 +6,31 @@ import Link from "next/link";
 const services = [
   {
     num: "01",
-    title: "Web Development",
+    title: "Personal Training",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque tenetur.",
-    href: "",
+      "Customized one-on-one personal training sessions tailored to your fitness goals and needs.",
+    href: "/personal-training",
   },
   {
     num: "02",
-    title: "UI/UX Design",
+    title: "Online Coaching",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque tenetur.",
-    href: "",
+      "Train from anywhere with personalized online coaching sessions designed for flexibility and results.",
+    href: "/online-coaching",
   },
   {
     num: "03",
-    title: "Logo Design",
+    title: "Nutrition Plans",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque tenetur.",
-    href: "",
+      "Get expert guidance on nutrition with personalized meal plans to complement your fitness journey.",
+    href: "/nutrition-plans",
   },
   {
     num: "04",
-    title: "SEO",
+    title: "Life Coaching",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque tenetur.",
-    href: "",
+      "Focused on helping you set and achieve personal or professional goals, with guidance on lifestyle improvements.",
+    href: "/life-coaching",
   },
 ];
 
