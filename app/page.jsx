@@ -14,7 +14,7 @@ const Home = () => {
           <div className="text-center xl:text-left order-2 xl:order-none">
             <span className="text-xl">Fitness Coach</span>
             <h1 className="h1 mb-6">
-              Welcome! I'm <br /> <span className="text-accent">Zumrod Tebra</span>
+              Welcome! I&apos;m <br /> <span className="text-accent">Zumrod Tebra</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
               I specialize in helping individuals achieve their fitness goals through personalized training sessions and comprehensive fitness programs. Book a one-on-one session or explore my tailored fitness programs to get started on your journey!
