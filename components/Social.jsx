@@ -4,8 +4,8 @@ import { FaGithub, FaLinkedinIn, FaYoutube, FaTwitter, FaTiktok, FaInstagram } f
 
 const socials = [
   { icon: <FaTiktok />, path: "" },
-  { icon: <FaLinkedinIn />, path: "" },
-  { icon: <FaYoutube />, path: "" },
+  // { icon: <FaLinkedinIn />, path: "" },
+  // { icon: <FaYoutube />, path: "" },
   { icon: <FaTwitter />, path: "" },
   { icon: <FaInstagram />, path: "" },
 ];

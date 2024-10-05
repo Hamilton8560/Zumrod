@@ -22,12 +22,13 @@ const Home = () => {
             {/* btn and socials */}
             <div className="flex flex-col xl:flex-row items-center gap-8">
               <a
-                href="https://calendly.com/davidhamilton473/fitness-consultation" // Replace with your Calendly link
+              href="http://program.zumrod.pro/"
+                // href="https://calendly.com/davidhamilton473/fitness-consultation" // Replace with your Calendly link
                 target="_blank"
                 rel="noopener noreferrer"
                 className="uppercase flex items-center gap-2 px-4 py-2 border border-accent text-accent hover:bg-accent hover:text-white transition-all duration-500"
               >
-                <span>Book a Session</span>
+                <span>Start Program</span>
                 <FiDownload className="text-xl" />
               </a>
               <div className="mb-8 xl:mb-0">

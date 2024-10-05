@@ -10,10 +10,10 @@ const links = [
     name: "home",
     path: "/",
   },
-  {
-    name: "services",
-    path: "/work",
-  },
+  // {
+  //   name: "services",
+  //   path: "/work",
+  // },
   // {
   //   name: "resume",
   //   path: "/resume",

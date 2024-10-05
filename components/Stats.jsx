@@ -8,15 +8,15 @@ const stats = [
     text: "Years of experience",
   },
   {
-    num: 150,
+    num: 75,
     text: "Clients trained",
   },
   {
-    num: 25,
+    num: 150,
     text: "Fitness programs delivered",
   },
   {
-    num: 300,
+    num: 850,
     text: "Sessions conducted",
   },
 ];

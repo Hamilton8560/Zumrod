@@ -4,7 +4,9 @@ import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-
+import nutritionImage from "../../public/assets/Nutrition.jpg";
+import blueImage from "../../public/blueJacket.jpg"
+import smileImage from "../../public/assets/smile.jpg"
 import { BsArrowUpRight } from "react-icons/bs";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import Link from "next/link";
@@ -20,7 +22,7 @@ const services = [
     description:
       "Personalized training sessions designed to help you achieve your fitness goals, whether you're looking to lose weight, build muscle, or improve overall wellness.",
     stack: [{ name: "Strength Training" }, { name: "HIIT" }, { name: "Cardio" }],
-    image: "/assets/fitness/personal_training.png",  // Update with actual image path
+    image: smileImage,  // Update with actual image path
     live: "https://calendly.com/davidhamilton473/fitness-consultation", // Replace with actual Calendly booking link
   },
   {
@@ -40,7 +42,7 @@ const services = [
     description:
       "Comprehensive nutrition plans that complement your fitness routine, including personalized meal plans and guidance to help you fuel your body effectively.",
     stack: [{ name: "Meal Planning" }, { name: "Nutrition Advice" }],
-    image: "/assets/fitness/nutrition.png",
+    image: nutritionImage,
     live: "https://calendly.com/davidhamilton473/fitness-consultation",
   },
   {
