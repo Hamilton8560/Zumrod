@@ -6,7 +6,7 @@ const socials = [
   { icon: <FaTiktok />, path: "" },
   // { icon: <FaLinkedinIn />, path: "" },
   // { icon: <FaYoutube />, path: "" },
-  { icon: <FaTwitter />, path: "" },
+  // { icon: <FaTwitter />, path: "" },
   { icon: <FaInstagram />, path: "" },
 ];
 
