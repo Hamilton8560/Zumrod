@@ -22,7 +22,7 @@ const AboutMe = () => {
             {/* btn and socials */}
             <div className="flex flex-col xl:flex-row items-center gap-8">
               <a
-              href="http://program.zumrod.pro/"
+              href="http://program.zumrod.app/"
                 // href="https://calendly.com/davidhamilton473/fitness-consultation" // Replace with your Calendly link
                 target="_blank"
                 rel="noopener noreferrer"
