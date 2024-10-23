@@ -1,3 +1,7 @@
+"use client"; // Ensure the component is treated as a Client Component
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation"; // Use the new Next.js navigation API
 import { FiDownload } from "react-icons/fi";
 
 // components
@@ -6,6 +10,25 @@ import Photo from "@/components/Photo";
 import Stats from "@/components/Stats";
 
 const Home = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 640) {
+        router.push("/mobile-home"); // Redirect to mobile-specific page if on mobile screen
+      }
+    };
+
+    // Check screen size on initial render
+    handleResize();
+
+    // Add event listener for resizing
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup the event listener
+    return () => window.removeEventListener("resize", handleResize);
+  }, [router]);
+
   return (
     <section className="h-full">
       <div className="container mx-auto h-full">
@@ -17,13 +40,13 @@ const Home = () => {
               Welcome! I&apos;m <br /> <span className="text-accent">Zumrod Tebra</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
-              I specialize in helping individuals achieve their fitness goals through personalized training sessions and comprehensive fitness programs. Book a one-on-one session or explore my tailored fitness programs to get started on your journey!
+              I'm here to help you reach your fitness goals in a way that's just right for you! Let's revive your fitness journey with dynamic, personalized training sessions and tailored fitness programs. We'll create a plan that's as unique as you are. Whether you choose a one-on-one session, a tailored program, or my specified workout routine available in my app, Zoomfit, I am here to inspire and motivate you every step of the way. Turn your vision into reality. Your best self is waiting!
             </p>
+
             {/* btn and socials */}
             <div className="flex flex-col xl:flex-row items-center gap-8">
               <a
-              href="http://program.zumrod.pro/"
-                // href="https://calendly.com/davidhamilton473/fitness-consultation" // Replace with your Calendly link
+                href="http://program.zumrod.pro/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="uppercase flex items-center gap-2 px-4 py-2 border border-accent text-accent hover:bg-accent hover:text-white transition-all duration-500"
@@ -39,12 +62,15 @@ const Home = () => {
               </div>
             </div>
           </div>
+
           {/* photo */}
           <div className="order-1 xl:order-none mb-8 xl:mb-0">
             <Photo />
           </div>
         </div>
       </div>
+
+      {/* Stats Section */}
       <Stats />
     </section>
   );
